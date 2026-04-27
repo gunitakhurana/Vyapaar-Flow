@@ -15,7 +15,7 @@ type Ticket = {
   resolution: string | null;
   related_order_id: string | null;
   created_by: string;
-  user_info?: { business_name: string };
+  user_info?: { business_name: string } | { business_name: string }[];
 };
 
 type UserStats = {
@@ -154,7 +154,12 @@ export default function AdminDisputesPage() {
                     {ticket.status}
                   </span>
                 </div>
-                <h4 className="text-sm font-semibold text-slate-800 mb-1">{ticket.user_info?.business_name || "Unknown User"}</h4>
+                <h4 className="text-sm font-semibold text-slate-800 mb-1">
+                  {(() => {
+                    const info = Array.isArray(ticket.user_info) ? ticket.user_info[0] : ticket.user_info;
+                    return info?.business_name || "Unknown User";
+                  })()}
+                </h4>
                 <p className="text-xs text-slate-500 line-clamp-2">{ticket.description}</p>
                 <div className="mt-2 text-[10px] text-slate-400 uppercase font-medium">
                   {new Date(ticket.created_at).toLocaleString()} • {ticket.user_role}
@@ -182,7 +187,14 @@ export default function AdminDisputesPage() {
                     <h2 className="text-xl font-bold text-slate-800">Investigation: #{selectedTicket.id.slice(0,8)}</h2>
                     <span className="px-3 py-1 bg-violet-100 text-violet-700 rounded-full text-xs font-bold uppercase">{selectedTicket.status}</span>
                   </div>
-                  <p className="text-sm text-slate-500">Submitted by <span className="font-semibold">{selectedTicket.user_info?.business_name}</span> ({selectedTicket.user_role})</p>
+                  <p className="text-sm text-slate-500">
+                    Submitted by <span className="font-semibold">
+                      {(() => {
+                        const info = Array.isArray(selectedTicket.user_info) ? selectedTicket.user_info[0] : selectedTicket.user_info;
+                        return info?.business_name;
+                      })()}
+                    </span> ({selectedTicket.user_role})
+                  </p>
                 </div>
                 <button onClick={() => setSelectedTicket(null)} className="text-slate-400 hover:text-slate-600">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>

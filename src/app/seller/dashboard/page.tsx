@@ -62,7 +62,9 @@ export default function SellerDashboard() {
       ) || [];
 
       const pendingByRetailer = pendingPaymentOrders.reduce((acc, order) => {
-        const name = order.retailer?.business_name || "Unknown Retailer";
+        // Handle cases where Supabase might return an array for joined fields in TS
+        const retailer = Array.isArray(order.retailer) ? order.retailer[0] : order.retailer;
+        const name = retailer?.business_name || "Unknown Retailer";
         acc[name] = (acc[name] || 0) + Number(order.total_amount);
         return acc;
       }, {} as Record<string, number>);
