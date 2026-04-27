@@ -2,12 +2,19 @@ name: Vercel Remote Trigger
 on:
   push:
     branches:
-      - main  # Trigger whenever anyone pushes to main
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Vercel Webhook
+        env:
+          # This line maps your secret to an environment variable
+          MY_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
         run: |
-          curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}"
+          if [ -z "$MY_URL" ]; then
+            echo "ERROR: The secret is empty. Check your GitHub Settings."
+            exit 1
+          fi
+          curl -X POST "$MY_URL"
