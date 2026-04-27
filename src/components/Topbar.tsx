@@ -5,7 +5,7 @@ import { useState } from "react";
 
 interface TopbarProps {
   title: string;
-  role: "seller" | "retailer";
+  role: "seller" | "retailer" | "admin";
   userName?: string;
 }
 
@@ -25,8 +25,13 @@ export default function Topbar({ title, role, userName = "Demo User" }: TopbarPr
     { label: "My Orders", href: "/retailer/orders" },
   ];
 
-  const links = role === "seller" ? sellerLinks : retailerLinks;
-  const accentColor = role === "seller" ? "indigo" : "emerald";
+  const adminLinks = [
+    { label: "Disputes", href: "/admin/disputes" },
+  ];
+
+  const links = role === "seller" ? sellerLinks : role === "admin" ? adminLinks : retailerLinks;
+  const accentColor = role === "seller" ? "indigo" : role === "admin" ? "violet" : "emerald";
+  const roleLabel = role === "seller" ? "Wholesaler" : role === "admin" ? "Admin" : "Retailer";
 
   return (
     <header className="bg-white border-b border-slate-200 px-4 sm:px-6 h-16 flex items-center justify-between sticky top-0 z-30">
@@ -42,7 +47,7 @@ export default function Topbar({ title, role, userName = "Demo User" }: TopbarPr
           </div>
           <div className="hidden md:block">
             <p className="text-sm font-medium text-slate-700">{userName}</p>
-            <p className={`text-xs text-${accentColor}-500 font-medium capitalize`}>{role === "seller" ? "Wholesaler" : "Retailer"}</p>
+            <p className={`text-xs text-${accentColor}-500 font-medium capitalize`}>{roleLabel}</p>
           </div>
         </div>
 
