@@ -59,7 +59,7 @@ export default function RetailerOrdersPage() {
       query = query.eq("status", filter);
     }
 
-    const { data, fetchError } = await query;
+    const { data, error: fetchError } = await query;
 
     if (fetchError) {
       setError(fetchError.message);
