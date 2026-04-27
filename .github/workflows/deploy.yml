@@ -1,0 +1,13 @@
+name: Vercel Remote Trigger
+on:
+  push:
+    branches:
+      - main  # Trigger whenever anyone pushes to main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel Webhook
+        run: |
+          curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}"
