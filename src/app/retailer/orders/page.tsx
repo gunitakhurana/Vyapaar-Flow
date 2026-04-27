@@ -29,7 +29,7 @@ const STATUS_FILTERS: { label: string; value: OrderStatus | "all" }[] = [
   { label: "Rejected", value: "rejected" },
 ];
 
-const STATUS_BADGE_MAP: Record<OrderStatus, string> = {
+const STATUS_BADGE_MAP: Record<OrderStatus, "Pending" | "Shipped" | "Delivered" | "Rejected"> = {
   pending: "Pending",
   shipped: "Shipped",
   delivered: "Delivered",
