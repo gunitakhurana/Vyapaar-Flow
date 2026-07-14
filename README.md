@@ -114,7 +114,8 @@ The dashboard acts as the starting point for managing:
   <img
     src="./screenshots/Wholesaler%20Landing%20Page.jpeg"
     alt="VyapaarFlow wholesaler landing page"
-    width="900"
+   height = "400"
+    width="200"
   />
 </p>
 
@@ -143,7 +144,8 @@ The product-creation flow is intentionally simple so that a wholesaler can add a
   <img
     src="./screenshots/Wholesaler%20Add%20Product.jpeg"
     alt="VyapaarFlow add product page"
-    width="900"
+      height = "400"
+    width="200"
   />
 </p>
 
@@ -172,7 +174,8 @@ From the product-management section, a wholesaler can:
   <img
     src="./screenshots/Wholesaler%20Manage%20Products.jpeg"
     alt="VyapaarFlow manage products page"
-    width="900"
+    height = "400"
+    width="200"
   />
 </p>
 
@@ -202,7 +205,8 @@ The inventory view allows the wholesaler to understand not only what products ex
   <img
     src="./screenshots/Wholesaler%20Inventory.jpeg"
     alt="VyapaarFlow wholesaler inventory page"
-    width="900"
+    height = "400"
+    width="200"
   />
 </p>
 
@@ -298,7 +302,8 @@ The retailer experience is designed around two main questions:
   <img
     src="./screenshots/Retailer%20Landing%20Page.jpeg"
     alt="VyapaarFlow retailer landing page"
-    width="900"
+    height = "400"
+    width="200"
   />
 </p>
 
@@ -335,7 +340,8 @@ The requested quantity is checked against the available stock so that the retail
   <img
     src="./screenshots/Retailer%20Browse%20Products.jpeg"
     alt="VyapaarFlow retailer product catalogue"
-    width="900"
+    height = "400"
+    width="200"
   />
 </p>
 
@@ -406,7 +412,8 @@ One wholesaler may have already shipped an order while another wholesaler's orde
   <img
     src="./screenshots/Retailer%20Orders.jpeg"
     alt="VyapaarFlow retailer orders page"
-    width="900"
+   height = "400"
+    width="200"
   />
 </p>
 
